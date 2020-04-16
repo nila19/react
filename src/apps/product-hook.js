@@ -106,12 +106,7 @@ const SearchPanel = (props) => {
         onChange={props.handleSearchTxtChange}
       />
       <div className='p-col-12'>
-        <Checkbox
-          inputId='inStock'
-          value='inStock'
-          checked={props.inStock}
-          onChange={props.handleInStockChange}
-        ></Checkbox>
+        <Checkbox inputId='inStock' value='inStock' checked={props.inStock} onChange={props.handleInStockChange} />
         <label htmlFor='inStock' className='p-checkbox-label'>
           Only show products in stock
         </label>

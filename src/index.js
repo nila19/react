@@ -24,6 +24,8 @@ const Forms = React.lazy(() => import('./apps/forms'));
 const Product = React.lazy(() => import('./apps/product'));
 const ProductHook = React.lazy(() => import('./apps/product-hook'));
 
+const TodoApp = React.lazy(() => import('./apps/todo/app'));
+
 const WithSuspense = (props) => {
   const loading = <div>Loading...</div>;
   return (
@@ -37,7 +39,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeIndex: 1,
+      activeIndex: 7,
     };
   }
 
@@ -64,9 +66,9 @@ class App extends Component {
             {/* <TabPanel header='TicTacToe' leftIcon='pi pi-play'>
               <WithSuspense title='TicTacToe' render={() => <Game />} />
             </TabPanel> */}
-            <TabPanel header='GameHook' leftIcon='pi pi-play'>
+            {/* <TabPanel header='GameHook' leftIcon='pi pi-play'>
               <WithSuspense title='GameHook' icon='pi pi-play' render={() => <GameHook />} />
-            </TabPanel>
+            </TabPanel> */}
             <TabPanel header='GameHookRedux' leftIcon='pi pi-play'>
               <WithSuspense title='GameHookRedux' icon='pi pi-play' render={() => <GameHookRedux />} />
             </TabPanel>
@@ -87,6 +89,9 @@ class App extends Component {
             </TabPanel>
             <TabPanel header='Mouse' leftIcon='pi pi-file'>
               <WithSuspense title='Mouse' icon='pi pi-file' render={() => mouse} />
+            </TabPanel>
+            <TabPanel header='Todo' leftIcon='pi pi-file'>
+              <WithSuspense title='Todo' icon='pi pi-file' render={() => <TodoApp />} />
             </TabPanel>
           </TabView>
         </React.StrictMode>

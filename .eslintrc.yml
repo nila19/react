@@ -1,0 +1,26 @@
+root: true
+env:
+  es6: true
+  node: true
+  mongo: true
+  mocha: true
+extends:
+  - 'eslint:recommended'
+  - 'react-app'
+  - 'google'
+  - 'plugin:react-hooks/recommended'
+globals:
+  Atomics: readonly
+  SharedArrayBuffer: readonly
+parser: esprima
+parserOptions:
+  ecmaVersion: 2018
+  sourceType: module
+  ecmaFeatures:
+    jsx: true
+    modules: true
+plugins:
+  - 'react-hooks/recommended'
+rules:
+  'react-hooks/rules-of-hooks': 'error'
+  'react-hooks/exhaustive-deps': 'warn'
