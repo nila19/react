@@ -11,6 +11,8 @@ const getVisibleTodos = (todos, filter) => {
       return todos.filter((e) => !e.completed);
     case VISIBILITY.COMPLETED:
       return todos.filter((e) => e.completed);
+    default:
+      return todos;
   }
 };
 

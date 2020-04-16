@@ -1,4 +1,4 @@
-import { combineReducers, createStore } from 'redux';
+import { combineReducers } from 'redux';
 
 // export const rootReducer = (state, action) => {
 //   return {
@@ -89,4 +89,4 @@ const calculateWinner = (squares) => {
 };
 
 export const rootReducer = combineReducers({ currentMove, sortOrder, moves });
-const store = createStore(rootReducer);
+// const store = createStore(rootReducer);
