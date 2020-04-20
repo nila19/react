@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 
 import TodoList from './todoList';
-import { ACTION, VISIBILITY } from '../reducer';
+import { ACTION } from '../actions';
+import { VISIBILITY } from './visibility';
 
 const getVisibleTodos = (todos, filter) => {
   switch (filter) {
@@ -16,16 +17,23 @@ const getVisibleTodos = (todos, filter) => {
   }
 };
 
+const delay = (ms) => {
+  return new Promise((resolve) => setTimeout(() => resolve(), ms));
+};
+
 const toggleTodo = (id) => {
   return {
-    type: ACTION.TODO_TOGGLE,
-    id: id,
+    type: ACTION.TOGGLE_TODO,
+    async payload() {
+      await delay(500);
+      return id;
+    },
   };
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    todos: getVisibleTodos(state.todos, state.visibilityFilter),
+    todos: getVisibleTodos(state.todos, ownProps.filter),
   };
 };
 

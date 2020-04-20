@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import { ThemeContext, themes } from './themeContext';
 import { UserContext, users } from './userContext';
-
 import { ThemeButton, ThemeBar } from './button';
 import { ThemeButtonHook, ThemeBarHook } from './button-hook';
 

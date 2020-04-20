@@ -6,8 +6,6 @@ import { Button } from 'primereact/button';
 import { Dropdown } from 'primereact/dropdown';
 import { MultiSelect } from 'primereact/multiselect';
 
-import { PageSplit } from '../components/page-split';
-
 const flavors = [
   {
     label: 'Grapefruit',
@@ -51,8 +49,10 @@ class ControlledForm extends Component {
   };
 
   handleFormSubmit = (event) => {
-    console.log('Files = ' + this.fileInput.current.files.length);
-    console.log('File = ' + this.fileInput.current.files[0].name);
+    if (this.fileInput.current.files && this.fileInput.current.files.length > 0) {
+      console.log('Files = ' + this.fileInput.current.files.length);
+      console.log('File = ' + this.fileInput.current.files[0].name);
+    }
     console.log('Submitted: ' + JSON.stringify(this.state));
     event.preventDefault();
   };
@@ -162,6 +162,17 @@ class UncontrolledForm extends Component {
     );
   };
 }
+
+// adding 'holes' in a component to embed generic children received as props.
+const PageSplit = (props) => {
+  return (
+    <div>
+      {props.top}
+      <hr style={{ padding: '2px', height: '1px', backgroundColor: '#007AD9', border: 'none' }} />
+      {props.bottom}
+    </div>
+  );
+};
 
 export default () => {
   return <PageSplit top={<ControlledForm />} bottom={<UncontrolledForm />} />;

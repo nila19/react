@@ -1,29 +1,45 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import { createStore, applyMiddleware } from 'redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createLogger } from 'redux-logger';
 
 import 'primereact/resources/themes/nova-light/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
-import './index.css';
+import './style/index.css';
 
-import App from './app';
-import { reducer } from './apps/todo/reducer';
+import App from './components/app';
+import Menu from './components/menu';
+import configureStore from './components/store';
+import { Clock } from './features/clock';
 
-// configuring redux store && middleware
-const loggerMiddleware = createLogger();
-const store = createStore(reducer, applyMiddleware(loggerMiddleware));
+import counterStore from './components/counterStore';
+import todoStore from './components/todoStore';
+
+import Counter from './features/counter/counter';
+import Todo2 from './features/todo2/app';
+
+const store = configureStore();
 
 const AppRoot = () => {
   return (
     <div>
       <Provider store={store}>
         <React.StrictMode>
-          <App />
+          <Clock />
+          <Router>
+            <Menu />
+            <App />
+          </Router>
         </React.StrictMode>
+      </Provider>
+      <Provider store={counterStore}>
+        <Counter />
+      </Provider>
+      <Provider store={todoStore}>
+        <Router>
+          <Todo2 />
+        </Router>
       </Provider>
     </div>
   );

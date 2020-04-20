@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../index.css';
 
 import { Fieldset } from 'primereact/fieldset';
 import { InputText } from 'primereact/inputtext';

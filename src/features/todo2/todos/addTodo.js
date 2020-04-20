@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { Fieldset } from 'primereact/fieldset';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { ProgressSpinner } from 'primereact/progressspinner';
 
+import { addTodo } from './todosSlice';
+
 export default (props) => {
   const [text, setText] = useState('');
+  const dispatch = useDispatch();
 
   const handleTextChange = (e) => {
     setText(e.target.value);
   };
 
-  const handleAddTodo = async () => {
-    if (text === '') {
-      return;
-    }
-    props.addTodo(text);
+  const handleAddTodo = () => {
+    dispatch(addTodo(text));
     setText('');
   };
 

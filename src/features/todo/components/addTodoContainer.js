@@ -1,21 +1,26 @@
 import { connect } from 'react-redux';
 
 import AddTodo from './addTodo';
-import { ACTION } from '../reducer';
+import { ACTION } from '../actions';
 
 const addTodo = (text) => {
   return {
-    type: ACTION.TODO_ADD,
-    text,
+    type: ACTION.ADD_TODO,
+    async payload() {
+      await delay(1000);
+      return text;
+    },
   };
 };
 
-const pendingAdd = () => {
-  return { type: ACTION.PENDING_ADD };
-};
-
-const pendingResolve = () => {
-  return { type: ACTION.PENDING_RESOLVE };
+const addTodoThunk = (text) => {
+  return (dispatch) => {
+    if (text === '') {
+      console.log('Stopped by thunk...');
+      return;
+    }
+    dispatch(addTodo(text));
+  };
 };
 
 const delay = (ms) => {
@@ -30,11 +35,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addTodo: async (text) => {
-      dispatch(pendingAdd());
-      await delay(2000);
-      dispatch(addTodo(text));
-      dispatch(pendingResolve());
+    addTodo: (text) => {
+      dispatch(addTodoThunk(text));
     },
   };
 };
