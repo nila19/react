@@ -9,7 +9,10 @@ const LoginControl = React.lazy(() => import('../features/login'));
 const Temperature = React.lazy(() => import('../features/temperature'));
 const ContextApp = React.lazy(() => import('../features/context/app'));
 const GameHookRedux = React.lazy(() => import('../features/game/tictactoe-hook-redux'));
-const Form = React.lazy(() => import('../features/form'));
+const Form = React.lazy(() => import('../features/form/form'));
+const Form2 = React.lazy(() => import('../features/form/form2'));
+const Form3 = React.lazy(() => import('../features/form/form3'));
+const FormikForm = React.lazy(() => import('../features/form/formikForm'));
 const ProductHook = React.lazy(() => import('../features/product/product-hook'));
 const TodoApp = React.lazy(() => import('../features/todo/app'));
 
@@ -49,7 +52,7 @@ export default () => {
           <WithSuspense title='Temperature' icon='pi pi-sort-amount-up' render={() => <Temperature />} />
         </Route>
         <Route path='/form'>
-          <WithSuspense title='Form' icon='pi pi-file' render={() => <Form />} />
+          <WithSuspense title='Form' icon='pi pi-file' render={() => <Form3 />} />
         </Route>
         <Route path='/product'>
           <WithSuspense title='Product' icon='pi pi-file' render={() => <ProductHook />} />
