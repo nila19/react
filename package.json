@@ -12,7 +12,7 @@
     "@testing-library/user-event": "^7.2.1",
     "classnames": "^2.2.6",
     "formik": "^2.1.4",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.23",
     "primeicons": "^2.0.0",
     "primereact": "^4.1.2",
     "react": "^16.13.1",
